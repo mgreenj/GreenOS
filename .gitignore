@@ -1,0 +1,8 @@
+**/.vscode
+**/.DS_Store
+*.o
+*.tmp
+*.d 
+*.ko 
+kernel.iso
+grub.cfg
