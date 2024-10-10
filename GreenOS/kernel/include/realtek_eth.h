@@ -158,7 +158,7 @@ struct eth_mmdmap {
 #define BMSR_EXTENDED_CAP_BIT   REG_BIT_RANGE(BMSR_REG, 0x0000)
 
 /* PHYID1 Register Table */         /* Read-Only -- NEVER Change */
-#define PHYID1_OUI_MSB_BIT          0x0000000000011100 <----------- WRONG ------------------------------>
+#define PHYID1_OUI_MSB_BIT          REG_BIT_RANGE(PHYID1_REG, 0x001C)
 
 /* PHYID2 Register Table */         /* Read-Only Values */
 #define PHYID2_OUI_LSB_BIT          REG_BIT_RANGE(PHYID2_REG, 0xFC00)
