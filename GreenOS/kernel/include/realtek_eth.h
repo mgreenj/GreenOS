@@ -19,9 +19,10 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#define REG_ADDRESS(page, offset) ((page << PAGE_SHIFT) | (offset * sizeof(uint32_t)))              /* Calculate Register Address */
+#define REG_ADDRESS(page, offset) ((page << PAGE_SHIFT) | (offset * sizeof(uint16_t)))              /* Calculate Register Address */
 #define MMD_DEVICE_ADDRESS(dev, offset) ((device) << DEV_SHIFT) + offset))                          /* Calculate MMD Register Address */
 #define REG_ISLH(u32) (((u32) & 0x00000080) ? 1 : 0)                                                /* Check if bit 7 is set */
+#define REG_BIT_RANGE(reg, mask) ((reg) & mask)                                                     /* Apply Bitmask for PHYID2 */
 #define REG_SC_SET 1                                                                                /* Activate function, set to 1 */
 
 // Macros to set, clear, and check specific bits
@@ -80,78 +81,88 @@
 
 /* Structure for Register Mappings */
 struct eth_regmap {
-    uint32 bmcr;        /* Basic Mode Control Register */
-    uint32 bmsr;        /* Basic Mode Status Register */
-    uint32 phyid1;      /* PHY Identifier Register 1 */
-    uint32 phyid2;      /* PHY Identifier Register 2 */
-    uint32 anar;        /* Auto-Negotiation Advertising Register */
-    uint32 anlpar;      /* Auto-Negotation Link Parner Ability Reg. */
-    uint32 aner;        /* Auto-Negotiation Expansion Register */
-    uint32 annptr;      /* Auto-Negotiation Next Page Transmit Reg.*/
-    uint32 annprr;      /* Auto-Negotiation Next Page Receive Reg. */
-    uint32 gbcr;        /* 1000Base-T Control Register */
-    uint32 gbsr;        /* 1000Base-T Status Register */
-    uint32 rsvd[2];     /* Skipping Reserved Registers */
-    uint32 macr;        /* MMD Access Control Register */
-    uint32 maadr;       /* MMD Access Address Data Register */
-    uint32 gbesr;       /* 1000Base-T Status Register */
-    uint32 rsvd2[2];    /* Skipping Reserved Registers */
-    uint32 iner;        /* Interupt Enable Register */
-    uint32 rsvd3[5];    /* Skipping Reserved Registers */
-    uint32 phycr1;      /* PHY Specific Control Register 1 */
-    uint32 physr;       /* PHY Specific Status Register */
-    uint32 rsvd[2];     /* Skipping Reserved Addresses */
-    uint32 insr;        /* Interrupt Status Register */
-    uint32 rsvd;        /* Skipping Reserved Addresses */
-    uint32 pagsr;       /* PAGSR Page Select Register */
-    uint32 phycr2;      /* PHY Specific Control Register 2 */
-    uint32 physcr;      /* PHY Special Config Register */
-    uint32 physr2;      /* PHY Specific Status Register 2 */
-    uint32 lcr;         /* LED Control Register */
-    uint32 eeelcr;      /* EEE LED Control Register */
-    uint32 miicr1;      /* MII Control Register 1 */
-    uint32 miicr2;      /* MII Control Register 2 */
-    uint32 intbcr;      /* INTB Pin Control Register */                     
+    uint16 bmcr;        /* Basic Mode Control Register */
+    uint16 bmsr;        /* Basic Mode Status Register */
+    uint16 phyid1;      /* PHY Identifier Register 1 */
+    uint16 phyid2;      /* PHY Identifier Register 2 */
+    uint16 anar;        /* Auto-Negotiation Advertising Register */
+    uint16 anlpar;      /* Auto-Negotation Link Parner Ability Reg. */
+    uint16 aner;        /* Auto-Negotiation Expansion Register */
+    uint16 annptr;      /* Auto-Negotiation Next Page Transmit Reg.*/
+    uint16 annprr;      /* Auto-Negotiation Next Page Receive Reg. */
+    uint16 gbcr;        /* 1000Base-T Control Register */
+    uint16 gbsr;        /* 1000Base-T Status Register */
+    uint16 rsvd[2];     /* Skipping Reserved Registers */
+    uint16 macr;        /* MMD Access Control Register */
+    uint16 maadr;       /* MMD Access Address Data Register */
+    uint16 gbesr;       /* 1000Base-T Status Register */
+    uint16 rsvd2[2];    /* Skipping Reserved Registers */
+    uint16 iner;        /* Interupt Enable Register */
+    uint16 rsvd3[5];    /* Skipping Reserved Registers */
+    uint16 phycr1;      /* PHY Specific Control Register 1 */
+    uint16 physr;       /* PHY Specific Status Register */
+    uint16 rsvd[2];     /* Skipping Reserved Addresses */
+    uint16 insr;        /* Interrupt Status Register */
+    uint16 rsvd;        /* Skipping Reserved Addresses */
+    uint16 pagsr;       /* PAGSR Page Select Register */
+    uint16 phycr2;      /* PHY Specific Control Register 2 */
+    uint16 physcr;      /* PHY Special Config Register */
+    uint16 physr2;      /* PHY Specific Status Register 2 */
+    uint16 lcr;         /* LED Control Register */
+    uint16 eeelcr;      /* EEE LED Control Register */
+    uint16 miicr1;      /* MII Control Register 1 */
+    uint16 miicr2;      /* MII Control Register 2 */
+    uint16 intbcr;      /* INTB Pin Control Register */                     
 };
 
 /* Structure for MMD Registers */
 struct eth_mmdmap {
-    uint32 pcir;        /* PCS Control 1 Register */
-    uint32 psir;        /* PCS Status 1 Register */
-    uint32 eecr;        /* EEE Capability Register */
-    uint32 eeewer;      /* EEE Wake Error Register */
-    uint32 eeear;       /* EEE Advertisment Register */
-    uint32 eeelpar;     /* EEE Link Partner Ability Register */
+    uint16 pcir;        /* PCS Control 1 Register */
+    uint16 psir;        /* PCS Status 1 Register */
+    uint16 eecr;        /* EEE Capability Register */
+    uint16 eeewer;      /* EEE Wake Error Register */
+    uint16 eeear;       /* EEE Advertisment Register */
+    uint16 eeelpar;     /* EEE Link Partner Ability Register */
 };
 
 /* BMCR Register Table */
-#define BMCR_RESET_BIT          15
-#define BMCR_LOOPBACK_BIT       14
-#define BMCR_SELECT_SPEED_BIT   13          /* With bit6: both_set=reserved; only_13_set=1000Mbps*/
-#define BMCR_AUTONEG_ENABLE_BIT 12
-#define BMCR_POWERDOWN_BIT      11
-#define BMCR_ISOLATE_BIT        10
-#define BMCR_RST_AUTONEG_BIT    9
-#define BMCR_DUPLEX_BIT         8
-#define BMCR_COL_TEST           7
-#define BMCR_SELECT_SPEED2_BIT  6           /* With bit13:  only_6_set=100Mbps; neither_set=10Mbps */
-#define BMCR_UNIDIR_ENABLE_BIT  5
+#define BMCR_RESET_BIT          REG_BIT_RANGE(BMSR_REG, 0x8000)
+#define BMCR_LOOPBACK_BIT       REG_BIT_RANGE(BMSR_REG, 0x4000)
+#define BMCR_SELECT_SPEED_BIT   REG_BIT_RANGE(BMSR_REG, 0x2000)
+#define BMCR_AUTONEG_ENABLE_BIT REG_BIT_RANGE(BMSR_REG, 0x1000)
+#define BMCR_POWERDOWN_BIT      REG_BIT_RANGE(BMSR_REG, 0x0800)
+#define BMCR_ISOLATE_BIT        REG_BIT_RANGE(BMSR_REG, 0x0400)
+#define BMCR_RST_AUTONEG_BIT    REG_BIT_RANGE(BMSR_REG, 0x0200)
+#define BMCR_DUPLEX_BIT         REG_BIT_RANGE(BMSR_REG, 0x0100)
+#define BMCR_COL_TEST           REG_BIT_RANGE(BMSR_REG, 0x0080)
+#define BMCR_SELECT_SPEED_BIT   REG_BIT_RANGE(BMSR_REG, 0x0040)
+#define BMCR_UNIDIR_ENABLE_BIT  REG_BIT_RANGE(BMSR_REG, 0x0020)
+#define BMCR_RSVD_BIT           REG_BIT_RANGE(BMCR_REG, 0x001F)
 
-/* BMSR Register Table */                   /* For each, 1 = Able/Full-Duplex, 0 = Unable/Full-Duplex */
-#define BMSR_100Base_T4_BIT     15          /* ALWAYS Set to zero */
-#define BMSR_100Base_TX_F_BIT   14
-#define BMSR_100Base_TX_H_BIT   13
-#define BMSR_10Base_T_F_BIT     12
-#define BMSR_10Base_T_H_BIT     11
-#define BMSR_100Base_T2_F_BIT   10
-#define BMSR_100Base_T2_H_BIT   9
-#define BMSR_1000Base_T_EX_BIT  8
-#define BMSR_UNIDIR_BIT         7
-#define BMSR_SUPP_PRE_BIT       6
-#define BMSR_AUTONEG_COMPL_BIT  5
-#define BMSR_REMOTE_FAULT_BIT   4
-#define BMSR_AUTONEG_BIT        3
-#define BMSR_LINK_STATUS_BIT    2
-#define BMSR_JABBER_DETECT_BIT  1
-#define BMSR_EXTENDED_CAP_BIT   0
+/* BMSR Register Table */       /* Foreach, 1 = Able/Full-Duplex, 0 = Unable/Full-Duplex, Read-only */
+#define BMSR_100Base_T4_BIT     REG_BIT_RANGE(BMSR_REG, 0x8000)
+#define BMSR_100Base_TX_F_BIT   REG_BIT_RANGE(BMSR_REG, 0x4000)
+#define BMSR_100Base_TX_H_BIT   REG_BIT_RANGE(BMSR_REG, 0x2000)
+#define BMSR_10Base_T_F_BIT     REG_BIT_RANGE(BMSR_REG, 0x1000)
+#define BMSR_10Base_T_H_BIT     REG_BIT_RANGE(BMSR_REG, 0x0800)
+#define BMSR_100Base_T2_F_BIT   REG_BIT_RANGE(BMSR_REG, 0x0400)
+#define BMSR_100Base_T2_H_BIT   REG_BIT_RANGE(BMSR_REG, 0x0200)
+#define BMSR_1000Base_T_EX_BIT  REG_BIT_RANGE(BMSR_REG, 0x0100)
+#define BMSR_UNIDIR_BIT         REG_BIT_RANGE(BMSR_REG, 0x0080)
+#define BMSR_SUPP_PRE_BIT       REG_BIT_RANGE(BMSR_REG, 0x0040)
+#define BMSR_AUTONEG_COMPL_BIT  REG_BIT_RANGE(BMSR_REG, 0x0020)
+#define BMSR_REMOTE_FAULT_BIT   REG_BIT_RANGE(BMSR_REG, 0x0010)
+#define BMSR_AUTONEG_BIT        REG_BIT_RANGE(BMSR_REG, 0x0008)
+#define BMSR_LINK_STATUS_BIT    REG_BIT_RANGE(BMSR_REG, 0x0004)
+#define BMSR_JABBER_DETECT_BIT  REG_BIT_RANGE(BMSR_REG, 0x0002)
+#define BMSR_EXTENDED_CAP_BIT   REG_BIT_RANGE(BMSR_REG, 0x0000)
+
+/* PHYID1 Register Table */         /* Read-Only -- NEVER Change */
+#define PHYID1_OUI_MSB_BIT          0x0000000000011100 <----------- WRONG ------------------------------>
+
+/* PHYID2 Register Table */         /* Read-Only Values */
+#define PHYID2_OUI_LSB_BIT          REG_BIT_RANGE(PHYID2_REG, 0xFC00)
+#define PHYID2_MODEL_NUM_BIT        REG_BIT_RANGE(PHYID2_REG, 0x0210)  
+#define PHYID2_SAMPLE_CLASS_BIT     REG_BIT_RANGE(PHYID2_REG, 0x0008)
+#define PHYID2_REVISION_NO_BIT      REG_BIT_RANGE(PHYID2_REG, 0x0007)
 
