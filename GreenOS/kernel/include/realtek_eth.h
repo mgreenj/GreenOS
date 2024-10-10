@@ -41,35 +41,35 @@
  */
 
 /* Register Mappings Page 0 */
-#define BMCR_REG    REG_ADDRESS(0x0000, 0)  /* Basic Mode Control Register */
-#define BMSR_REG    REG_ADDRESS(0x0000, 1)  /* Basic Mode Status Register */
-#define PHYID1_REG  REG_ADDRESS(0x0000, 2)  /* PHY Identifier Register 1 */
-#define PHYID2_REG  REG_ADDRESS(0x0000, 3)  /* PHY Identifier Register 2 */
-#define ANAR_REG    REG_ADDRESS(0x0000, 4)  /* Auto-Negotiation Advertising Register */
-#define ANLPAR_REG  REG_ADDRESS(0x0000, 5)  /* Auto-Negotation Link Parner Ability Reg. */
-#define ANER_REG    REG_ADDRESS(0x0000, 6)  /* Auto-Negotiation Expansion Register */
-#define ANNPTR_REG  REG_ADDRESS(0x0000, 7)  /* Auto-Negotiation Next Page Transmit Reg.*/
-#define ANNPRR_REG  REG_ADDRESS(0x0000, 8)  /* Auto-Negotiation Next Page Receive Reg. */
-#define GBCR_REG    REG_ADDRESS(0x0000, 9)  /* 1000Base-T Control Register */
-#define GBSR_REG    REG_ADDRESS(0x0000, 10) /* 1000Base-T Status Register */
-#define MACR_REG    REG_ADDRESS(0x0000, 13) /* MMD Access Control Register */
-#define MAADR_REG   REG_ADDRESS(0x0000, 14) /* MMD Access Address Data Register */
-#define GBESR_REG   REG_ADDRESS(0x0000, 15) /* 1000Base-T Status Register */
+#define BMCR_REG        REG_ADDRESS(0x0000, 0)  /* Basic Mode Control Register */
+#define BMSR_REG        REG_ADDRESS(0x0000, 1)  /* Basic Mode Status Register */
+#define PHYID1_REG      REG_ADDRESS(0x0000, 2)  /* PHY Identifier Register 1 */
+#define PHYID2_REG      REG_ADDRESS(0x0000, 3)  /* PHY Identifier Register 2 */
+#define ANAR_REG        REG_ADDRESS(0x0000, 4)  /* Auto-Negotiation Advertising Register */
+#define ANLPAR_REG      REG_ADDRESS(0x0000, 5)  /* Auto-Negotation Link Parner Ability Reg. */
+#define ANER_REG        REG_ADDRESS(0x0000, 6)  /* Auto-Negotiation Expansion Register */
+#define ANNPTR_REG      REG_ADDRESS(0x0000, 7)  /* Auto-Negotiation Next Page Transmit Reg.*/
+#define ANNPRR_REG      REG_ADDRESS(0x0000, 8)  /* Auto-Negotiation Next Page Receive Reg. */
+#define GBCR_REG        REG_ADDRESS(0x0000, 9)  /* 1000Base-T Control Register */
+#define GBSR_REG        REG_ADDRESS(0x0000, 10) /* 1000Base-T Status Register */
+#define MACR_REG        REG_ADDRESS(0x0000, 13) /* MMD Access Control Register */
+#define MAADR_REG       REG_ADDRESS(0x0000, 14) /* MMD Access Address Data Register */
+#define GBESR_REG       REG_ADDRESS(0x0000, 15) /* 1000Base-T Status Register */
 
 /* Register Mappings Page 0xa42 */
-#define INER_REG    REG_ADDRESS(0xa42, 18)  /* Interupt Enable Register */
-#define PHYCR1_REG  REG_ADDRESS(0xa43, 24)  /* PHY Specific Control Register 1 */
-#define PHYSR_REG   REG_ADDRESS(0xa43, 26)  /* PHY Specific Status Register */
-#define INSR_REG    REG_ADDRESS(0xa43, 29)  /* Interrupt Status Register */
-#define PAGSR_REG   REG_ADDRESS(0xa43, 31)                                              /* PAGSR Page Select Register */
-#define PHYCR2_REG  REG_ADDRESS(0xa44, 17)  /* PHY Specific Control Register 2 */
-#define PHYSCR_REG  REG_ADDRESS(0xa46, 20)  /* PHY Special Config Register */
-#define PHYSR2_REG  REG_ADDRESS(0xa4b, 16)  /* PHY Specific Status Register 2 */
-#define LCR_REG     REG_ADDRESS(0xd04, 16)  /* LED Control Register */
-#define EEELCR_REG  REG_ADDRESS(0xd04, 17)  /* EEE LED Control Register */
-#define MIICR1_REG  REG_ADDRESS(0xd08, 17)  /* MII Control Register 1 */
-#define MIICR2_REG  REG_ADDRESS(0xd08, 21)  /* MII Control Register 2 */
-#define INTBCR_REG  REG_ADDRESS(0xd40, 22)  /* INTB Pin Control Register */
+#define INER_REG        REG_ADDRESS(0xa42, 18)  /* Interupt Enable Register */
+#define PHYCR1_REG      REG_ADDRESS(0xa43, 24)  /* PHY Specific Control Register 1 */
+#define PHYSR_REG       REG_ADDRESS(0xa43, 26)  /* PHY Specific Status Register */
+#define INSR_REG        REG_ADDRESS(0xa43, 29)  /* Interrupt Status Register */
+#define PAGSR_REG       REG_ADDRESS(0xa43, 31)                                              /* PAGSR Page Select Register */
+#define PHYCR2_REG      REG_ADDRESS(0xa44, 17)  /* PHY Specific Control Register 2 */
+#define PHYSCR_REG      REG_ADDRESS(0xa46, 20)  /* PHY Special Config Register */
+#define PHYSR2_REG      REG_ADDRESS(0xa4b, 16)  /* PHY Specific Status Register 2 */
+#define LCR_REG         REG_ADDRESS(0xd04, 16)  /* LED Control Register */
+#define EEELCR_REG      REG_ADDRESS(0xd04, 17)  /* EEE LED Control Register */
+#define MIICR1_REG      REG_ADDRESS(0xd08, 17)  /* MII Control Register 1 */
+#define MIICR2_REG      REG_ADDRESS(0xd08, 21)  /* MII Control Register 2 */
+#define INTBCR_REG      REG_ADDRESS(0xd40, 22)  /* INTB Pin Control Register */
 
 /* MMD REgister Mappings */
 #define PCIR_MMD_REG    MMD_DEVICE_ADDRESS(3, 0)    /* PCS Control 1 Register */
@@ -126,36 +126,36 @@ struct eth_mmdmap {
 };
 
 /* BMCR Register Table */
-#define BMCR_RESET_BIT          REG_BIT_RANGE(BMSR_REG, 0x8000)
-#define BMCR_LOOPBACK_BIT       REG_BIT_RANGE(BMSR_REG, 0x4000)
-#define BMCR_SELECT_SPEED_BIT   REG_BIT_RANGE(BMSR_REG, 0x2000)
-#define BMCR_AUTONEG_ENABLE_BIT REG_BIT_RANGE(BMSR_REG, 0x1000)
-#define BMCR_POWERDOWN_BIT      REG_BIT_RANGE(BMSR_REG, 0x0800)
-#define BMCR_ISOLATE_BIT        REG_BIT_RANGE(BMSR_REG, 0x0400)
-#define BMCR_RST_AUTONEG_BIT    REG_BIT_RANGE(BMSR_REG, 0x0200)
-#define BMCR_DUPLEX_BIT         REG_BIT_RANGE(BMSR_REG, 0x0100)
-#define BMCR_COL_TEST           REG_BIT_RANGE(BMSR_REG, 0x0080)
-#define BMCR_SELECT_SPEED_BIT   REG_BIT_RANGE(BMSR_REG, 0x0040)
-#define BMCR_UNIDIR_ENABLE_BIT  REG_BIT_RANGE(BMSR_REG, 0x0020)
-#define BMCR_RSVD_BIT           REG_BIT_RANGE(BMCR_REG, 0x001F)
+#define BMCR_RESET_BIT              REG_BIT_RANGE(BMSR_REG, 0x8000)
+#define BMCR_LOOPBACK_BIT           REG_BIT_RANGE(BMSR_REG, 0x4000)
+#define BMCR_SELECT_SPEED_BIT       REG_BIT_RANGE(BMSR_REG, 0x2000)
+#define BMCR_AUTONEG_ENABLE_BIT     REG_BIT_RANGE(BMSR_REG, 0x1000)
+#define BMCR_POWERDOWN_BIT          REG_BIT_RANGE(BMSR_REG, 0x0800)
+#define BMCR_ISOLATE_BIT            REG_BIT_RANGE(BMSR_REG, 0x0400)
+#define BMCR_RST_AUTONEG_BIT        REG_BIT_RANGE(BMSR_REG, 0x0200)
+#define BMCR_DUPLEX_BIT             REG_BIT_RANGE(BMSR_REG, 0x0100)
+#define BMCR_COL_TEST               REG_BIT_RANGE(BMSR_REG, 0x0080)
+#define BMCR_SELECT_SPEED_BIT       REG_BIT_RANGE(BMSR_REG, 0x0040)
+#define BMCR_UNIDIR_ENABLE_BIT      REG_BIT_RANGE(BMSR_REG, 0x0020)
+#define BMCR_RSVD_BIT               REG_BIT_RANGE(BMCR_REG, 0x001F)
 
 /* BMSR Register Table */       /* Foreach, 1 = Able/Full-Duplex, 0 = Unable/Full-Duplex, Read-only */
-#define BMSR_100Base_T4_BIT     REG_BIT_RANGE(BMSR_REG, 0x8000)
-#define BMSR_100Base_TX_F_BIT   REG_BIT_RANGE(BMSR_REG, 0x4000)
-#define BMSR_100Base_TX_H_BIT   REG_BIT_RANGE(BMSR_REG, 0x2000)
-#define BMSR_10Base_T_F_BIT     REG_BIT_RANGE(BMSR_REG, 0x1000)
-#define BMSR_10Base_T_H_BIT     REG_BIT_RANGE(BMSR_REG, 0x0800)
-#define BMSR_100Base_T2_F_BIT   REG_BIT_RANGE(BMSR_REG, 0x0400)
-#define BMSR_100Base_T2_H_BIT   REG_BIT_RANGE(BMSR_REG, 0x0200)
-#define BMSR_1000Base_T_EX_BIT  REG_BIT_RANGE(BMSR_REG, 0x0100)
-#define BMSR_UNIDIR_BIT         REG_BIT_RANGE(BMSR_REG, 0x0080)
-#define BMSR_SUPP_PRE_BIT       REG_BIT_RANGE(BMSR_REG, 0x0040)
-#define BMSR_AUTONEG_COMPL_BIT  REG_BIT_RANGE(BMSR_REG, 0x0020)
-#define BMSR_REMOTE_FAULT_BIT   REG_BIT_RANGE(BMSR_REG, 0x0010)
-#define BMSR_AUTONEG_BIT        REG_BIT_RANGE(BMSR_REG, 0x0008)
-#define BMSR_LINK_STATUS_BIT    REG_BIT_RANGE(BMSR_REG, 0x0004)
-#define BMSR_JABBER_DETECT_BIT  REG_BIT_RANGE(BMSR_REG, 0x0002)
-#define BMSR_EXTENDED_CAP_BIT   REG_BIT_RANGE(BMSR_REG, 0x0000)
+#define BMSR_100Base_T4_BIT         REG_BIT_RANGE(BMSR_REG, 0x8000)
+#define BMSR_100Base_TX_F_BIT       REG_BIT_RANGE(BMSR_REG, 0x4000)
+#define BMSR_100Base_TX_H_BIT       REG_BIT_RANGE(BMSR_REG, 0x2000)
+#define BMSR_10Base_T_F_BIT         REG_BIT_RANGE(BMSR_REG, 0x1000)
+#define BMSR_10Base_T_H_BIT         REG_BIT_RANGE(BMSR_REG, 0x0800)
+#define BMSR_100Base_T2_F_BIT       REG_BIT_RANGE(BMSR_REG, 0x0400)
+#define BMSR_100Base_T2_H_BIT       REG_BIT_RANGE(BMSR_REG, 0x0200)
+#define BMSR_1000Base_T_EX_BIT      REG_BIT_RANGE(BMSR_REG, 0x0100)
+#define BMSR_UNIDIR_BIT             REG_BIT_RANGE(BMSR_REG, 0x0080)
+#define BMSR_SUPP_PRE_BIT           REG_BIT_RANGE(BMSR_REG, 0x0040)
+#define BMSR_AUTONEG_COMPL_BIT      REG_BIT_RANGE(BMSR_REG, 0x0020)
+#define BMSR_REMOTE_FAULT_BIT       REG_BIT_RANGE(BMSR_REG, 0x0010)
+#define BMSR_AUTONEG_BIT            REG_BIT_RANGE(BMSR_REG, 0x0008)
+#define BMSR_LINK_STATUS_BIT        REG_BIT_RANGE(BMSR_REG, 0x0004)
+#define BMSR_JABBER_DETECT_BIT      REG_BIT_RANGE(BMSR_REG, 0x0002)
+#define BMSR_EXTENDED_CAP_BIT       REG_BIT_RANGE(BMSR_REG, 0x0000)
 
 /* PHYID1 Register Table */         /* Read-Only -- NEVER Change */
 #define PHYID1_OUI_MSB_BIT          REG_BIT_RANGE(PHYID1_REG, 0x001C)
