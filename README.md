@@ -69,6 +69,7 @@ GNU [Recommended Tools for Compilation](https://www.gnu.org/software/libc/manual
 ## License
 
 GreenOS - lightweight, secure OS
+
 Copyright (C) 2024 Maurice Green
 
 This program is free software; you can redistribute it and/or modify
