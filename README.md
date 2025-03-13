@@ -8,24 +8,24 @@
 </p>
 
 #  The GreenOS Operating System
-The GreenOS operating System is a minimal operating system developed as a part of my [tutorial series]().  GreenOS is a bare-metal OS that will run on the [BeagleV-Ahead board](https://www.beagleboard.org/boards/beaglev-ahead), using the RISC-V64 ISA.  I may add support for additional architectures; however, I am busy and this is a hobby.
+The GreenOS operating System is a minimal operating system developed as a part of my [tutorial series]().  GreenOS is a bare-metal OS that will run on the [Rasberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/), using the ARMv8.2-A Instruction Set.  I may add support for additional architectures; however, I am busy and this is a hobby.
 
 
 ## Target Development Board
-- [BeagleV-Ahead](https://docs.beagle.cc/boards/beaglev/ahead/01-introduction.html)
+- [Rasberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/)
 
 
 ## RISC-V Toolchain for Cross-Compiling
 When developing an operating system, you'll most liklely want your OS to run on several different architectures (e.g., ARM, RISC-V, i386/x86, x86_64, etc.).  Unless you plan on purchasing hardware to test functionality for each architecture, you'll need to familiarize yourself with the process of Cross-Compiling.
 
-Cross-Compiling can be a headache; nevertheless, it's a vital skill for OS Development.  As mentioned above, this tutorial will use the BeagleV-Ahead, which uses the RISC-V ISA.  Native language compilers for C/C++ on your development machine (Linux, MacOS, Linux, or *BSD) will not produce the target machine code for RISC-V, so you must build a cross-compile environment with a toolchain that can.
+Cross-Compiling can be a headache; nevertheless, it's a vital skill for OS Development.  As mentioned above, this tutorial will use the Rasperry Pi 5 board, which uses the ARMv8.2-A Instruction Set.  This Instruction Set will run on a Broadcom bcm2712 machine, so we must build a cross-compile environment with a toolchain that can.
 
 > [!TIP]
 > It may be worth it to learn more about toolchains and cross-compiling before
 > beginning.  Athough not necessary, it may save you some time.  Listed below
 > are a few optional resources.
 
-Follow the [official documentation](https://risc-v-getting-started-guide.readthedocs.io/en/latest/linux-qemu.html) on the RISC-V `Getting Started Guide` for running 64- and 32-bit RISC-V Linux.
+The [ARM GNU Toolchain](https://developer.arm.com/Tools%20and%20Software/GNU%20Toolchain) includes all that is necessary for an ARM target. 
 
 Cross compiling can present unique challengiFor additional information on cross-compiling read the following:
 	-  [cross-compiling guide on OSDev Wiki](https://wiki.osdev.org/GCC_Cross-Compiler)
@@ -38,13 +38,10 @@ Another cool guide is [Operating Systems: From 0 to 1](https://tuhdo.github.io/o
 The [BrokenThorn OS Development series](http://www.brokenthorn.com/Resources/OSDevIndex.html) is older, but still relevant.  It includes many interesting tutorials such as DMA programming, using Programmable Interrupt Controllers (PIC), etc.
 
 
-## BeagleV-Ahead Documentation
+## Rasperry Pi 5
 
-Please visit my [documentation reference page](Docs/BeagleV/README.md) for BeagleV.s
+Please visit my [documentation reference page](Docs/rpi/README.md) for Raspberry Pi.
 
-## RISC-V Documentation
-
-Most of what you need can be found in the [Five EmbedDev documentation](https://five-embeddev.com/riscv-user-isa-manual/Priv-v1.12/riscv-spec.html).  If you need any additional help, you can search online.
 
 ## Additional Resources
 
