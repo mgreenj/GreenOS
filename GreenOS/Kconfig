@@ -1,0 +1,5 @@
+
+
+mainmenu "GreenOS Kernel Configuration"
+
+source "Kconfig.greenos"
