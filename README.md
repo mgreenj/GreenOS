@@ -7,6 +7,8 @@
 <a href="#"><img src="https://img.shields.io/packagist/#" alt="License"></a>
 </p>
 
+[![wakatime](https://wakatime.com/badge/github/mgreenj/GreenOS.svg)](https://wakatime.com/badge/github/mgreenj/GreenOS)
+
 #  The GreenOS Operating System
 The GreenOS operating System is a minimal operating system developed as a part of my [tutorial series]().  GreenOS is a bare-metal OS that will run on the [Rasberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/), using the ARMv8.2-A Instruction Set.  I may add support for additional architectures; however, I am busy and this is a hobby.
 
